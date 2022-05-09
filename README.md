@@ -11,3 +11,5 @@ All you have to do is to create 2 empty folders in the root directory:
 - /videos
 - /gifs
 
+Also, you have to download the corresponding libraries/files of gifsicle, either linux or windows as the documentation say.
+And put them in the root directory.
