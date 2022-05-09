@@ -1,0 +1,10 @@
+/videos
+/gifs
+data.log
+record.log
+gifdiff.exe
+gifsicle.exe
+.dockerignore
+/__pycache__
+Dockerfile
+.env
