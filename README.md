@@ -8,6 +8,6 @@ Libraries used in this project:
 - JWT
 
 All you have to do is to create 2 empty folders in the root directory:
-1.- /videos
-2.- /gifs
+- /videos
+- /gifs
 
