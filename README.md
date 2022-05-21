@@ -1,5 +1,5 @@
 # Video-To-Gif
-A custom Video to Gif converter using it with and using the feature of JWT to deny external requests that could lead to broke
+A custom Video to Gif converter using OpenCV, Flask and using the feature of JWT to deny external requests that could lead to broke the program
 
 Libraries used in this project:
 - OpenCV
