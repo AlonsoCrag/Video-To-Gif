@@ -1,11 +1,12 @@
 from flask import Flask, request, send_file
 from flask_cors import CORS
-from cvFunc import TransformVideo
+from CV.cvFunc import TransformVideo
 import io
 from logging.config import dictConfig
 import logging
 from dotenv import load_dotenv
-from jwt_midl import check_token
+from JWT.jwt_midl import check_token
+from DiscBP.bot_gif import DiscordBluePrint
 
 load_dotenv()
 
@@ -27,7 +28,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'formatter': 'Simple_Format',
-            'filename': "data.log",
+            'filename': "logs/data.log",
         }
     },
 
@@ -43,7 +44,14 @@ LOGGING = {
 dictConfig(LOGGING)
 
 app = Flask(__name__)
+app.register_blueprint(DiscordBluePrint)
+
 CORS(app)
+
+print("Application running...")
+
+app.logger.debug("Project is running!")
+app.logger.info("INFO: PROJECT IS READY")
 
 @app.before_request
 def Middleware():
@@ -61,36 +69,32 @@ def main():
     app.logger.info("New request")
 
     if request.method == 'POST':
-        app.logger.info("----- Incomming Post request -----")
-        data = request.files["image"]
-        fileName = request.form.get('name')
-        fileExtension = request.form.get('fileExtension')
+        try:
+            app.logger.info("----- Incomming Post request -----")
+            data = request.files["image"]
+            fileName = request.form.get('name')
+            fileExtension = request.form.get('fileExtension')
 
-        print(request.form)
+            print(request.form)
 
-        content = data.read()
+            content = data.read()
 
-        with open("videos/"+fileExtension, 'wb') as _file:
-            _file.write(content)
+            with open("videos/"+fileExtension, 'wb') as _file:
+                _file.write(content)
 
-        TransformVideo("videos/"+fileExtension, fileName)
+            TransformVideo("videos/"+fileExtension, fileName)
 
-        path = f"gifs/{fileName}.gif"
+            path = f"gifs/{fileName}.gif"
 
-        # with open(path, 'rb') as _file:
-        #     If we dont handle the MultiPartFormData, an error will pop up
-        #     content = _file.read()
-        #     print("Type of data", type(content))
-        #     print(content)
-        #     return _file.read()
-
-        return send_file(path, as_attachment=True)
+            return send_file(path, as_attachment=True)
+        except:
+            return "Access granted, but an unexpected error was found, maybe because you are not sending a video in the POST method"
 
     # source = request.args.get("user")
     print("Icomming request")
     # return "Flask running"
-    path = "{fileName}.gif"
+    # path = "{fileName}.gif"
     return "Done"
 
 
-app.run(debug=True)
+app.run(debug=True, port=8000)

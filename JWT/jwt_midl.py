@@ -17,6 +17,9 @@ def check_token():
     try:
         token = request.form.get('token')
         print("Data", token)
+        if token == None:
+            token = request.json["token"]
+            print("Token found in request", token)
         # token = data["token"]
         #jwt will decode and check if the time has expired
         res = jwt.decode(token, private_key, algorithms=["HS256"])
@@ -28,6 +31,8 @@ def check_token():
         
     if res["username"] == username and password == res["password"]:
         return res
+    
+    print("A token was found but it doesnt have the right credentials...")
     
     print('Wrong credentials provided...')
     resp = jsonify({ "message": "token expired or not found, request another one" })

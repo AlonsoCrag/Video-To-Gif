@@ -7,4 +7,6 @@ gifsicle.exe
 .dockerignore
 /__pycache__
 Dockerfile
+/Output_Img
+/delta
 .env
