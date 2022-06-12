@@ -2,7 +2,7 @@ import cv2
 import imageio
 from pygifsicle import optimize, gifsicle
 
-def TransformVideo(video, videoName):
+def TransformVideo(video, videoName, main_route=None):
     Video = cv2.VideoCapture(video)
 
     frames = []
@@ -22,6 +22,19 @@ def TransformVideo(video, videoName):
 
 
     Video.release()
+
+    if main_route == True:
+        imageio.mimsave(f"gifs/{videoName}.gif", frames, fps=50)
+
+        gifsicle(
+            sources=f"gifs/{videoName}.gif", # or a single_file.gif
+            destination=f"gifs/{videoName}.gif", # or just omit it and will use the first source provided.
+            optimize=True, # Whetever to add the optimize flag of not
+            colors=255, # Number of colors t use
+        )
+
+        print("Success")
+        return
 
     imageio.mimsave(f"/home/alonso/Escritorio/Js/Discord-Bot---Welcome-Users/assets/{videoName}.gif", frames, fps=50)
 

@@ -68,6 +68,7 @@ def main():
     print("Access to the API granted")
     app.logger.info("New request")
 
+
     if request.method == 'POST':
         try:
             app.logger.info("----- Incomming Post request -----")
@@ -82,7 +83,7 @@ def main():
             with open("videos/"+fileExtension, 'wb') as _file:
                 _file.write(content)
 
-            TransformVideo("videos/"+fileExtension, fileName)
+            TransformVideo("videos/"+fileExtension, fileName, main_route=True)
 
             path = f"gifs/{fileName}.gif"
 
@@ -97,4 +98,4 @@ def main():
     return "Done"
 
 
-app.run(debug=True, port=8000)
+app.run(debug=True, port=8000, host='0.0.0.0')
