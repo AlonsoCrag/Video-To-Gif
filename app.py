@@ -98,8 +98,4 @@ def main():
     return "Done"
 
 
-<<<<<<< HEAD
 app.run(debug=True, port=6060, host='64.227.25.226')
-=======
-app.run(debug=True, port=8000, host='0.0.0.0')
->>>>>>> 6c9b0947c32f340e68ed7a0896d381f9536a786c

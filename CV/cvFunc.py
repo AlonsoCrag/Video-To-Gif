@@ -23,9 +23,6 @@ def TransformVideo(video, videoName, main_route=None):
 
     Video.release()
 
-<<<<<<< HEAD
-    imageio.mimsave(f"/home/alonso/Discord-Bot---Welcome-Users/assets/{videoName}.gif", frames, fps=50)
-=======
     if main_route == True:
         imageio.mimsave(f"gifs/{videoName}.gif", frames, fps=50)
 
@@ -40,7 +37,6 @@ def TransformVideo(video, videoName, main_route=None):
         return
 
     imageio.mimsave(f"/home/alonso/Escritorio/Js/Discord-Bot---Welcome-Users/assets/{videoName}.gif", frames, fps=50)
->>>>>>> 6c9b0947c32f340e68ed7a0896d381f9536a786c
 
     gifsicle(
         sources=f"/home/alonso/Discord-Bot---Welcome-Users/assets/{videoName}.gif", # or a single_file.gif
