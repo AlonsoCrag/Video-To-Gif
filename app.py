@@ -98,4 +98,4 @@ def main():
     return "Done"
 
 
-app.run(debug=True, port=6060, host='64.227.25.226')
+app.run(debug=True, port=6060, host='0.0.0.0')
