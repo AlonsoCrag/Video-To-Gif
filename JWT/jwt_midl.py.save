@@ -10,12 +10,11 @@ load_dotenv()
 
 private_key = getenv('PRIVATE_KEY')
 username = getenv('USERNAME')
-password = getenv('PASSW')
+password = getenv('PASSWORD')
 
 print("ENV USER", username)
 print("ENV PASSWORD", password)
 print("ENV KEY", private_key)
-
 def check_token():
 
     try:
