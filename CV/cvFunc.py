@@ -23,11 +23,11 @@ def TransformVideo(video, videoName):
 
     Video.release()
 
-    imageio.mimsave(f"/home/alonso/Escritorio/Js/Discord-Bot---Welcome-Users/assets/{videoName}.gif", frames, fps=50)
+    imageio.mimsave(f"/home/alonso/Discord-Bot---Welcome-Users/assets/{videoName}.gif", frames, fps=50)
 
     gifsicle(
-        sources=f"/home/alonso/Escritorio/Js/Discord-Bot---Welcome-Users/assets/{videoName}.gif", # or a single_file.gif
-        destination=f"/home/alonso/Escritorio/Js/Discord-Bot---Welcome-Users/assets/{videoName}.gif", # or just omit it and will use the first source provided.
+        sources=f"/home/alonso/Discord-Bot---Welcome-Users/assets/{videoName}.gif", # or a single_file.gif
+        destination=f"/home/alonso/Discord-Bot---Welcome-Users/assets/{videoName}.gif", # or just omit it and will use the first source provided.
         optimize=True, # Whetever to add the optimize flag of not
         colors=255, # Number of colors t use
     )

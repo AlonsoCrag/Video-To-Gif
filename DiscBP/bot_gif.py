@@ -7,6 +7,7 @@ DiscordBluePrint = Blueprint('discord_route', __name__)
 
 @DiscordBluePrint.route('/discord', methods = ['POST', 'GET'])
 def Route():
+    print("REQUEST IN /discord allowed")
     Username = request.json["username"]
     TextIntoGif(Username)
     BorderVideo(Username)
